@@ -41,7 +41,7 @@ jobs:
         run: dotnet tool install --global dotnet-ef
       
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release -p Blog.csproj
 
       - name: Update database
         run: dotnet ef database update
