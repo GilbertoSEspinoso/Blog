@@ -74,5 +74,5 @@ jobs:
         with:
           app-name: 'webappblogbalta2812'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_63356710178446DC90C3A5AC90A8A321 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2E85F2EFCB6C4141B61358D7F6E6 }}
           package: .
