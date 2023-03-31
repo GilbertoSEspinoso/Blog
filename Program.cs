@@ -19,10 +19,7 @@ app.MapControllers();
 app.UseStaticFiles();
 app.UseResponseCompression();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.Run();
