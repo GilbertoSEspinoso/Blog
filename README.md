@@ -1,149 +1,108 @@
-# Documentação da API
-Este repositório contém a implementação de uma API para um blog, que permite gerenciar Categorias e Posts.
+# Blog Balta
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/GilbertoSEspinoso/Blog/blob/main/LICENCE)
 
-## API BaltaBlog:
-Para acessar esse projeto clique nesse link: http://webappblogbalta2812.azurewebsites.net/
+# Sobre o projeto
 
-## Endpoints
+http://webappblogbalta2812.azurewebsites.net/index.html
 
-### Categories
+Blog Balta é uma API Rest construída durante o curso **Carreira Desenvolvedor Backend .NET - (Fundamentos do ASP.NET 6 e
+Fundamentos do Azure, Git, GitHub e DevOps)**, cursos oferecidos pelo site [Balta.io](https://balta.io/player "Site da Balta.io")
 
-***`GET /v1/categories`***
+A aplicação consiste em uma API que permite gerenciar Categorias e Posts de um Blog, além de possuir autenticação JWT e gerenciamento de usuários. Com essa API, é possível criar usuários, fazer login e gerenciar imagens de perfil.
 
-* *Retorna uma lista com todas as categorias cadastradas.*
+> * A documentação da API foi gerada automaticamente pelo `Swagger` e para acessar a documentação, 
+basta clicar no link que disponibilizei logo acima.
+> * Esta APi está na sua primeira versão `v1` e novas implementações ainda serão realizadas e atualizadas. 
 
-***Parâmetros***
+# Tecnologias utilizadas
 
-* Nenhum
+## Back end
+- C#
+- ASP.NET 6
+- Entity Framework Core (ORM)
 
-***Exemplo de resposta:***
+## Padrões
+- API REST
+- MVC
+- JWT
 
+## Ferramentas utilizadas
+- Visual Studio Code
+- Azure Data Studio
+- Docker (para gerenciamento do banco de dados localmente).]
+- Postman (para testes dos endpoints da API)
 
-```json
-   {
-      "success": true,
-      "data": [
-        {
-          "id": 1,
-          "name": "Tecnologia",
-          "slug": "tecnologia"
-        },
-        {
-          "id": 2,
-          "name": "Esportes",
-          "slug": "esportes"
-        }
-      ]
-   }  
+## Implantação em produção
+- Back end: Azure
+- Banco de dados: SQL server
 
+# Como executar o projeto
+
+Pré-requisitos: .NET 6.0
+
+```bash
+# clonar repositório
+git clone https://github.com/GilbertoSEspinoso/Blog.git
+
+# entrar na pasta do projeto Blog
+cd Blog
+
+# executar o projeto
+dotnet run
 ```
 
-***`GET /v1/categories/{id}`***
+> Para usar a API, você precisará enviar as requisições utilizando a URL correta e os parâmetros necessários.
+A seguir, um exemplo de rota disponível na API:
 
-* *Retorna os detalhes de uma categoria específica através do número do Id fornecido.*
 
-***Parâmetros:***
+## Criação de usuário:
 
-* id (obrigatório): ID da categoria a ser consultada.
-
-***Exemplo de resposta:***
-
+* Método HTTP: POST
+* URL: `POST /v1/accounts/`
+* Body:
+    * `"name"` (string) : `"Nome do usuário"`
+    * `"email"` (string) : `"email do usuário"`
+* Resposta de sucesso:
+    * Código HTTP: 200 (OK)
+    * Response:
 ```json
-   {
-  "success": true,
-  "data": {
-    "id": 1,
-    "name": "Tecnologia",
-    "slug": "tecnologia"
+  {
+    "data": {
+        "user": "email do usuário",
+        "password": "senha gerada aleatoriamente"
+    }
   }
-}
-
 ```
+## Endpoints da API
+### Categories
+` GET /v1/categories `
+* <sub>Retorna uma lista com todas as categorias cadastradas.</sub>
 
-***`POST /v1/categories`***
+` GET /v1/categories/{id} `
+* <sub>Retorna os detalhes de uma categoria específica através do número do Id fornecido.</sub>
 
-* *Cria uma nova categoria.*
+` POST /v1/categories `
+* <sub>Cria uma nova categoria.</sub>
 
-***Parâmetros:***
+` PUT /v1/categories/{id} `
+* <sub>Atualiza os dados de uma categoria existente.</sub>
 
-* `name` (obrigatório): Nome da categoria.
-* `slug` (obrigatório): Slug da categoria (deve ser único).
+` DELETE /v1/categories/{id} `
+* <sub>Exclui uma categoria existente.</sub>
 
-***Exemplo de requisição:***
+### Post
+` GET /v1/posts `
+* <sub>Retorna uma lista paginada de posts em ordem decrescente de atualização, com informações sobre a categoria e o autor de cada post.</sub>
 
-```json
-    {
-      "name": "Política",
-      "slug": "politica"
-    }
+` GET /v1/posts/{id} `
+* <sub>Retorna informações detalhadas sobre um post específico com o ID correspondente, incluindo informações sobre o autor do post e a categoria a que ele pertence.</sub>
 
-```
+` POST /v1/posts/categories/{category} `
+* <sub>Retorna uma lista paginada de posts com base na categoria correspondente, com informações sobre a categoria e o autor de cada post.</sub>
 
-***Exemplo de resposta:***
 
-```json
-    {
-      "success": true,
-      "data": {
-        "id": 3,
-        "name": "Política",
-        "slug": "politica"
-      }
-    }
+# Autor
 
-```
+Gilberto da Silva Espinoso
 
-***`PUT /v1/categories/{id}`***
-
-* *Atualiza os dados de uma categoria existente.*
-
-***Parâmetros:***
-
-* `id`  (obrigatório): ID da categoria a ser atualizada.
-* `name` (opcional): Novo nome da categoria.
-* `slug` (opcional): Novo slug da categoria (deve ser único).
-
-***Exemplo de requisição:***
-
-```json
-    {
-      "name": "Tecnologia e Inovação",
-      "slug": "tecnologia-e-inovacao"
-    }
-
-```
-
-***Exemplo de resposta:***
-
-```json
-    {
-      "success": true,
-      "data": {
-        "id": 1,
-        "name": "Tecnologia e Inovação",
-        "slug": "tecnologia-e-inovacao"
-      }
-    } 
-```
-
-***`DELETE /v1/categories/{id}`***
-
-* *Exclui uma categoria existente.*
-
-***Parâmetros:***
-
-* id (obrigatório): ID da categoria a ser excluída.
-
-***Exemplo de resposta:***
-
-```json
-   {
-      "success": true,
-      "data": {
-        "id": 1,
-        "name": "Tecnologia",
-        "slug": "tecnologia"
-      }
-}
-
-```
+https://www.linkedin.com/in/gilbertoespns/
