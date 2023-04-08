@@ -20,6 +20,7 @@ basta clicar no link que disponibilizei logo acima.
 - C#
 - ASP.NET 6
 - Entity Framework Core (ORM)
+- SQL server
 
 ## Padrões
 - API REST
