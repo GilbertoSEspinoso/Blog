@@ -33,9 +33,6 @@ basta clicar no link que disponibilizei logo acima.
 - Docker (para gerenciamento do banco de dados localmente).]
 - Postman (para testes dos endpoints da API)
 
-## Implantação em produção
-- Back end: Azure
-- Banco de dados: SQL server
 
 # Como executar o projeto
 
