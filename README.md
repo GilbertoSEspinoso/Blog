@@ -3,16 +3,14 @@
 
 # Sobre o projeto
 
-http://webappblogbalta2812.azurewebsites.net/index.html
 
 Blog Balta é uma API Rest construída durante o curso **Carreira Desenvolvedor Backend .NET - (Fundamentos do ASP.NET 6 e
 Fundamentos do Azure, Git, GitHub e DevOps)**, cursos oferecidos pelo site [Balta.io](https://balta.io/player "Site da Balta.io")
 
 A aplicação consiste em uma API que permite gerenciar Categorias e Posts de um Blog, além de possuir autenticação JWT e gerenciamento de usuários. Com essa API, é possível criar usuários, fazer login e gerenciar imagens de perfil.
 
-> * A documentação da API foi gerada automaticamente pelo `Swagger` e para acessar a documentação, 
-basta clicar no link que disponibilizei logo acima.
-> * Esta APi está na sua primeira versão `v1` e novas implementações ainda serão realizadas e atualizadas. 
+> * A documentação da API foi gerada automaticamente pelo `Swagger`.
+
 
 # Tecnologias utilizadas
 
